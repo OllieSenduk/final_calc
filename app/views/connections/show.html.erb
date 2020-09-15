@@ -1,5 +1,13 @@
 <div class="container">
     <h1><%= @connection.name %></h1>
+    <ul>
+        <% @connection.connection_years.each do |cy| %>
+        <li>
+            Year: <%= cy.year %>
+            Price: <%= humanized_money cy.price_sub_cents %>
+        </li>
+        <% end %>
+    </ul>
 
     <% @years.each do |year| %>
     <div class="row mb-5">
