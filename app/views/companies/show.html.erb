@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="w-100">
+            <h1><%= @company.name %></h1>
+            <h3><%= @company.category %></h3>
+
+            <div class="bg-white px-5 py-5">
+                <h2>All of the connections</h2>
+                <% @connections.each do |connection| %>
+                <%= link_to  "Connection #{connection.name}", connection_path(connection) %></b>
+                <% end %>
+            </div>
+
+            <h2>Add a new connection</h2>
+            <%= simple_form_for([@company, @connection]) do |f|  %>
+            <%= f.input :name %>
+            <%= f.button :submit, "submit" %>
+            <% end%>
+        </div>
+    </div>
+</div>

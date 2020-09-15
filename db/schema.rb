@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_071838) do
+ActiveRecord::Schema.define(version: 2020_09_12_110239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "connection_years", force: :cascade do |t|
+    t.bigint "year_id", null: false
+    t.bigint "connection_id", null: false
+    t.integer "kwh"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_sub_cents"
+    t.index ["connection_id"], name: "index_connection_years_on_connection_id"
+    t.index ["year_id"], name: "index_connection_years_on_year_id"
+  end
+
+  create_table "connections", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_connections_on_company_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +53,18 @@ ActiveRecord::Schema.define(version: 2020_09_11_071838) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "years", force: :cascade do |t|
+    t.string "name"
+    t.integer "tier_1_price"
+    t.integer "tier_2_price"
+    t.integer "tier_3_price"
+    t.integer "tier_4_price"
+    t.integer "tier_5_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "connection_years", "connections"
+  add_foreign_key "connection_years", "years"
+  add_foreign_key "connections", "companies"
 end

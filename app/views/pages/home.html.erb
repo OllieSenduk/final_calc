@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welkom op de energie calculator</h1>
+<ul>
+    <% @companies.each do |company| %>
+    <li> <%= link_to company.name, company_path(company) %> - <%= company.category %></li>
+    <% end %>
+</ul>
+<%= link_to "create a new company", new_company_path %>

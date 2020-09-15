@@ -1,0 +1,15 @@
+<div class="container">
+    <h1><%= @connection.name %></h1>
+
+    <% @years.each do |year| %>
+    <div class="row mb-5">
+        <b>Year: <%= year.name %></b>
+        <%= simple_form_for([@connection, @connection_year]) do |f|%>
+        <%= f.input :kwh %>
+        <%= f.input :year_id, as: 'hidden', :input_html => { :value => year.id } %>
+
+        <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+    <% end %>
+</div>
