@@ -1,11 +1,11 @@
 class ConnectionYearsController < ApplicationController
-    before_action :find_connection, only: :create
+    before_action :find_connection, only: [:create]
 
     def create 
         @connection_year = ConnectionYear.new(connection_year_params)
         @connection_year.connection = @connection
         @years = Year.all
-        @connection_year.price_sub_cents = Calculators::YearlyEnergyPriceCalculator.new(@connection_year)
+        @connection_year.price_sub_cents = Calculators::YearlyEnergyPriceCalculator.new(@connection_year).total_price_sub_cents
         if @connection_year.save
             redirect_to connection_path(@connection)
         else
@@ -14,6 +14,13 @@ class ConnectionYearsController < ApplicationController
     end
 
     def update
+    end
+
+    def destroy
+        @connection_year = ConnectionYear.find(params[:id])
+        @connection = @connection_year.connection
+        @connection_year.destroy
+        redirect_to connection_path(@connection)
     end
 
     private

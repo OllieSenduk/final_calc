@@ -52,7 +52,7 @@ MoneyRails.configure do |config|
     name:                "Euro with subunit of 5 digits",
     symbol:              "€",
     symbol_first:        true,
-    subunit:             "Subcent",
+    subunit:             "sub_cent",
     subunit_to_unit:     100000,
     thousands_separator: ".",
     decimal_mark:        ","

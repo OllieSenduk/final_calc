@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :connections, only: [:show] do
     resources :connection_years, only: [:create]
   end
+
+  resources :connection_years, only: [:destroy]
 end

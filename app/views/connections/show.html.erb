@@ -2,10 +2,22 @@
     <h1><%= @connection.name %></h1>
     <ul>
         <% @connection.connection_years.each do |cy| %>
-        <li>
-            Year: <%= cy.year %>
-            Price: <%= humanized_money cy.price_sub_cents %>
-        </li>
+        <ul>
+            <li>
+                Year: <%= cy.year.name %>
+            </li>
+            <li>
+                Current price : €<%= cy.price_euros %>
+            </li>
+            <li>
+                KWH: <%= cy.kwh %>
+            </li>
+            <li>
+                <%= link_to "delete", connection_year_path(cy), method: "DELETE" %>
+            </li>
+        </ul>
+        <br>
+        <br>
         <% end %>
     </ul>
 
