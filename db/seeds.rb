@@ -29,16 +29,16 @@ Year.create(
 
 Year.create(
     name: "2018",
-    tier_1_price: 0.10458,
-    tier_2_price: 0.05274,
-    tier_3_price: 0.01404,
-    tier_4_price: 0.00057,
+    tier_1_price: 10458,
+    tier_2_price: 5274,
+    tier_3_price: 1404,
+    tier_4_price: 57,
 )
 
 Year.create(
     name: "2019",
-    tier_1_price: 0.09863,
-    tier_2_price: 0.05337,
-    tier_3_price: 0.01421,
-    tier_4_price: 0.00058,
+    tier_1_price: 9863,
+    tier_2_price: 5337,
+    tier_3_price: 1421,
+    tier_4_price: 58,
 )
