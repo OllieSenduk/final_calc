@@ -6,9 +6,14 @@
 
             <div class="bg-white px-5 py-5">
                 <h2>All of the connections</h2>
-                <% @connections.each do |connection| %>
-                <%= link_to  "Connection #{connection.name}", connection_path(connection) %></b>
-                <% end %>
+                <ul>
+                    <% @connections.each do |connection| %>
+                    <li>
+                        <%= link_to  "Connection #{connection.name}", connection_path(connection) %></b>
+                        <%= link_to " -- delete this connection", connection_path(connection), method: "DELETE" %>
+                    </li>
+                    <% end %>
+                </ul>
             </div>
 
             <h2>Add a new connection</h2>

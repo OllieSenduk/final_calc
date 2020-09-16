@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
 
   resources :companies, only: [:show, :new, :create] do
-    resources :connections, only: [:create]
+    resources :connections, only: [:create, :destroy]
   end
 
   resources :connections, only: [:show] do

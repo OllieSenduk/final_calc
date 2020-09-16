@@ -17,6 +17,15 @@ class ConnectionsController < ApplicationController
         end
     end
 
+    def destroy
+        @connection = Connection.find(params[:id])
+        @connection_year = ConnectionYear.new
+        @years = Year.all
+
+        @connection.destroy
+        redirect_to connection_path(@connection_)
+    end
+
     private
 
     def connection_params
