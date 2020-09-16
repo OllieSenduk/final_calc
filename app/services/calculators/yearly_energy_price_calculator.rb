@@ -3,9 +3,9 @@ module Calculators
 
         attr_reader :total_price_sub_cents
         
-        def initialize(connection_year)
-            @kwh = connection_year.kwh
-            @year = connection_year.year
+        def initialize(kwh, year)
+            @kwh = kwh
+            @year = year
             @total_remaining_kwh = @kwh
             @total_price_sub_cents = 0
 
