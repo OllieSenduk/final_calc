@@ -6,6 +6,12 @@ class ConnectionsController < ApplicationController
         @years = Year.all
     end
 
+    def new
+        @company = Company.find(params[:company_id])
+        @connections = Connection.all
+        @connection = Connection.new
+    end
+
     def create
         @connection = Connection.new(connection_params)
         @company = Company.find(params[:company_id])
@@ -13,7 +19,7 @@ class ConnectionsController < ApplicationController
         if @connection.save
             redirect_to company_path(@company)
         else
-            render 'companies/show'
+            render 'new'
         end
     end
 
@@ -21,9 +27,10 @@ class ConnectionsController < ApplicationController
         @connection = Connection.find(params[:id])
         @connection_year = ConnectionYear.new
         @years = Year.all
+        @company = @connection.company
 
         @connection.destroy
-        redirect_to connection_path(@connection_)
+        redirect_to company_path(@company)
     end
 
     private

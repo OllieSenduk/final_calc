@@ -1,7 +1,14 @@
-<h1>Welkom op de energie calculator</h1>
-<ul>
-    <% @companies.each do |company| %>
-    <li> <%= link_to company.name, company_path(company) %> - <%= company.category %></li>
-    <% end %>
-</ul>
-<%= link_to "create a new company", new_company_path %>
+<div class="container">
+    <h1>Welkom op de energie calculator</h1>
+    <%= link_to "create a new company", new_company_path, class: 'btn btn-primary mb-4' %>
+    <div class="cards">
+        <% @companies.each do |company| %>
+        <%= link_to company_path(company) do %>
+        <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <%= company.name%> - <%= company.category %>
+        </div>
+        <% end %>
+        <% end%>
+    </div>
+</div>

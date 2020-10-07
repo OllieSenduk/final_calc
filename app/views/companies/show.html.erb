@@ -1,8 +1,35 @@
 <div class="container">
+    <h1 class="mt-4"><%= @company.name %></h1>
+    <h3><%= @company.category %></h3>
+    <div class="cards mt-4">
+        <%= link_to company_savings_path(@company) do %>
+        <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            Total savings
+        </div>
+        <% end %>
+
+        <%= link_to new_company_connection_path(@company) do %>
+        <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+            Add connections
+        </div>
+        <% end %>
+
+        <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+            Dinner
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
     <div class="row">
         <div class="w-100">
             <h1><%= @company.name %></h1>
             <h3><%= @company.category %></h3>
+
 
             <div class="bg-white px-5 py-5">
                 <h2>All of the connections</h2>
@@ -10,7 +37,7 @@
                     <% @connections.each do |connection| %>
                     <li>
                         <%= link_to  "Connection #{connection.name}", connection_path(connection) %></b>
-                        <%= link_to " -- delete this connection", connection_path(connection), method: "DELETE" %>
+                        <%= link_to " -- delete this connection", connection_path(connection), method: "DELETE", data: {confirm: "Are you sure?"}  %>
                     </li>
                     <% end %>
                 </ul>

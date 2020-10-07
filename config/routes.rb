@@ -4,7 +4,16 @@ Rails.application.routes.draw do
   
 
   resources :companies, only: [:show, :new, :create] do
-    resources :connections, only: [:create, :destroy]
+    resources :connections, only: [:new, :create]
+    resource :savings, only: [:show]
+  end
+
+  # resources :years, only: [] do
+  #   resources :connection_years, only: [:new]  
+  # end
+
+
+  resources :connections, only: [:destroy] do
   end
 
   resources :connections, only: [:show] do

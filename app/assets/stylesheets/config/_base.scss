@@ -1,0 +1,17 @@
+a {
+    list-style: none;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &.text-link {
+        color: black;
+        font-weight: bolder;
+    }
+}
+
+a:hover {
+    text-decoration: none;
+}

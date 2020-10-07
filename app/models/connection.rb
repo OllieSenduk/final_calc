@@ -1,10 +1,9 @@
 class Connection < ApplicationRecord
   belongs_to :company
-  has_many :years
-  has_many :connection_years
+  has_many :connection_years, dependent: :destroy
   has_many :years, through: :connection_years
 
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :company_id }
 
   def company_name
     self.company.name
@@ -18,6 +17,7 @@ class Connection < ApplicationRecord
     self.connection_years.inject(0){|sum,x| sum + x.price_euros }
   end
 
-  def new_price
-  end
+  # def total_amount_of_kwh
+  #   self.connection_years.each do |cy| cy 
+  # end
 end
