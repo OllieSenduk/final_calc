@@ -3,6 +3,7 @@ class ConnectionsController < ApplicationController
     def show
         @connection = Connection.find(params[:id])
         @connection_year = ConnectionYear.new
+        @connection_years = @connection.connection_years
         @years = Year.all
     end
 
@@ -14,6 +15,7 @@ class ConnectionsController < ApplicationController
 
     def create
         @connection = Connection.new(connection_params)
+        @connections = Connection.all
         @company = Company.find(params[:company_id])
         @connection.company = @company
         if @connection.save

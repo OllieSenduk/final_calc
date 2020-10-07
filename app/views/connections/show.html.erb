@@ -1,1 +1,28 @@
 <%= link_to "Terug naar #{@connection.company_name}", company_path(@connection.connection_company) %>
+
+<div class="container my-4">
+    <h2>Voeg een nieuwe jaar toe aan <%= @connection.name %></h2>
+    <%= simple_form_for([@connection, @connection_year]) do |f|  %>
+    <div class="form-group">
+        <%= f.association :year, as: :select, collection: Year.all %>
+        <% if @connection_year.errors.any? %>
+        <b><%= @connection_year.errors.messages[:connection][0] %></b>
+        <% end %>
+
+        <%= f.input :kwh %>
+        <%= f.button :submit, "submit", class: "btn btn-primary" %>
+    </div>
+    <% end%>
+</div>
+
+<div class="container my-4">
+    <h2>Reeds toegevoegd</h2>
+    <ul>
+        <% @connection_years.each do |cy|  %>
+        <li>
+            <%= cy.year_name %> - <%= cy.kwh %>kwh - €<%= cy.price_euros %>
+            <%= link_to " Verwijder dit jaar", connection_year_path(cy), method: "DELETE", data: {confirm: "Are you sure?"}  %>
+        </li>
+        <% end %>
+    </ul>
+</div>

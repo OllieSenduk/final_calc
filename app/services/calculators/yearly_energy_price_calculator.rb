@@ -13,15 +13,15 @@ module Calculators
         end
 
         def init_calc
-            times = 0
+            @times = 0
             Year::KWH_TIERS.each_with_index do |kwh_tier, index|
                 if @total_remaining_kwh - kwh_tier >= 0 
                     calc_total_price_sub_cents(kwh_tier, index)
                     @total_remaining_kwh -= kwh_tier
-                    times += 1
+                    @times += 1
                 else
                     calc_total_price_sub_cents(@total_remaining_kwh, index)
-                    times += 1
+                    @times += 1
                     break
                 end
             end
