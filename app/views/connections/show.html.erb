@@ -20,7 +20,7 @@
     <ul>
         <% @connection_years.each do |cy|  %>
         <li>
-            <%= cy.year_name %> - <%= cy.kwh %>kwh - €<%= cy.price_euros %>
+            <%= cy.year_name %> - <%= cy.kwh %>kwh - €<%= cy.total_price_connection_year %>
             <%= link_to " Verwijder dit jaar", connection_year_path(cy), method: "DELETE", data: {confirm: "Are you sure?"}  %>
         </li>
         <% end %>

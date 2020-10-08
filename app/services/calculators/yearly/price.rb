@@ -1,5 +1,6 @@
 module Calculators
-    class YearlyEnergyPriceCalculator 
+    module Yearly
+    class Price
 
         attr_reader :total_price_sub_cents
         
@@ -19,7 +20,7 @@ module Calculators
                     calc_total_price_sub_cents(kwh_tier, index)
                     @total_remaining_kwh -= kwh_tier
                     @times += 1
-                else
+                else 
                     calc_total_price_sub_cents(@total_remaining_kwh, index)
                     @times += 1
                     break

@@ -6,7 +6,6 @@ class ConnectionYearsController < ApplicationController
         @connection_year.connection = @connection
         @connection_years = @connection.connection_years
         @years = Year.all
-        @connection_year.price_sub_cents = Calculators::YearlyEnergyPriceCalculator.new(@connection_year.kwh, @connection_year.year).total_price_sub_cents
         if @connection_year.save
             redirect_to connection_path(@connection)
         else

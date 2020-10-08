@@ -1,9 +1,9 @@
 <%= link_to "Terug naar #{@company.name}", company_path(@company) %>
+
 <div class="container my-4">
     <h2>Voeg een nieuwe connectie toe</h2>
     <%= simple_form_for([@company, @connection]) do |f|  %>
     <div class="form-group">
-
         <%= f.input :name, class: "form-control" %>
         <%= f.button :submit, "submit", class: "btn btn-primary" %>
     </div>
