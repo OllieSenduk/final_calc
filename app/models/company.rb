@@ -6,4 +6,8 @@ class Company < ApplicationRecord
     include Calculators::YearlyCompanyStats
     include Calculators::TotalCompanyStats
     
+
+    def group_by_old_and_new_price
+        [["Oude Prijs", total_old_price], ["Nieuwe prijs", total_new_price]]
+    end
 end
