@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_200115) do
+ActiveRecord::Schema.define(version: 2020_09_11_075157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,24 +20,6 @@ ActiveRecord::Schema.define(version: 2020_09_16_200115) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "total_new_price_2015"
-    t.integer "total_kwh_2015"
-    t.float "total_new_price_2016"
-    t.integer "total_kwh_2016"
-    t.float "total_new_price_2017"
-    t.integer "total_kwh_2017"
-    t.float "total_new_price_2018"
-    t.integer "total_kwh_2018"
-    t.float "total_new_price_2019"
-    t.integer "total_kwh_2019"
-    t.float "total_new_price"
-    t.integer "total_kwh"
-    t.float "total_old_price_2015"
-    t.float "total_old_price_2016"
-    t.float "total_old_price_2017"
-    t.float "total_old_price_2018"
-    t.float "total_old_price_2019"
-    t.float "total_old_price"
   end
 
   create_table "connection_years", force: :cascade do |t|
@@ -46,8 +28,6 @@ ActiveRecord::Schema.define(version: 2020_09_16_200115) do
     t.integer "kwh"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "price_sub_cents"
-    t.float "price_euros"
     t.index ["connection_id"], name: "index_connection_years_on_connection_id"
     t.index ["year_id"], name: "index_connection_years_on_year_id"
   end

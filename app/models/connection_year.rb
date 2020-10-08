@@ -2,9 +2,6 @@ class ConnectionYear < ApplicationRecord
   belongs_to :year
   belongs_to :connection
 
-  # monetize :price_sub_cents, with_model_currency: :sub_cent
-
-
 
   validates :connection, uniqueness: { scope: :year,
     message: "Er kan maar 1 per jaar worden toegevoegd" }
