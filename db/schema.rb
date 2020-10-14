@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_075157) do
+ActiveRecord::Schema.define(version: 2020_10_14_143630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_11_075157) do
     t.integer "kwh"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "kwh_storage"
     t.index ["connection_id"], name: "index_connection_years_on_connection_id"
     t.index ["year_id"], name: "index_connection_years_on_year_id"
   end
@@ -38,6 +39,13 @@ ActiveRecord::Schema.define(version: 2020_09_11_075157) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_connections_on_company_id"
+  end
+
+  create_table "tax_credits", force: :cascade do |t|
+    t.string "year"
+    t.float "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +69,11 @@ ActiveRecord::Schema.define(version: 2020_09_11_075157) do
     t.integer "tier_5_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "tier_1_storage_price"
+    t.float "tier_2_storage_price"
+    t.float "tier_3_storage_price"
+    t.float "tier_4_storage_price"
+    t.float "tier_5_storage_price"
   end
 
   add_foreign_key "connection_years", "connections"

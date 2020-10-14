@@ -3,9 +3,10 @@ module Calculators
 
         attr_reader :total_price_euros
         
-        def initialize(kwh, year)
+        def initialize(kwh, year, type_of_tax="kwh")
             @kwh = kwh
             @year = year
+            @type_of_tax = type_of_tax
             @total_remaining_kwh = @kwh
             @total_price_sub_cents = 0
             @total_price_euros = 0
@@ -28,7 +29,11 @@ module Calculators
         end
 
         def calc_total_price_sub_cents(_multiplier, _index)
-            @total_price_sub_cents += _multiplier * @year.send("tier_#{_index+1}_price")
+            if @type_of_tax == 'kwh'
+                @total_price_sub_cents += _multiplier * @year.send("tier_#{_index+1}_price")
+            else
+                @total_price_sub_cents += _multiplier * @year.send("tier_#{_index+1}_storage_price")
+            end
         end
     end
 end

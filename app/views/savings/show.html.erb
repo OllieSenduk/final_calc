@@ -10,27 +10,81 @@
         <thead>
             <tr>
                 <th class="text-left">Totaal aantal connecties</th>
+                <th class="text-left">Totaal verlies op heffingbelasting</th>
                 <th class="text-left">Totaal Kwh</th>
-                <th class="text-left">Oude prijs</th>
-                <th class="text-left">Nieuwe prijs</th>
-                <th class="text-left">Besparing</th>
+                <th class="text-left">Oude Kwh prijs</th>
+                <th class="text-left">Nieuwe Kwh prijs</th>
+                <th class="text-left">Besparing op Kwh </th>
             </tr>
         </thead>
         <tbody class="table-hover">
             <tr>
                 <td class="text-left"><%= @company.number_of_connections %></td>
+                <td class="text-left"><%= @company.total_deduction_of_tax %></td>
                 <td class="text-left"><%= @company.total_kwh %></td>
-                <td class="text-left">€<%= @company.total_old_price%></td>
-                <td class="text-left">€<%= @company.total_new_price %></td>
-                <td class="text-left">€<%= @company.total_savings  %></td>
+                <td class="text-left">€<%= @company.total_old_kwh_price%></td>
+                <td class="text-left">€<%= @company.total_new_kwh_price %></td>
+                <td class="text-left">€<%= @company.total_kwh_savings  %></td>
             </tr>
         </tbody>
     </table>
-    <div class="d-flex text-center align-items-center justify-content-center">
+
+    <div class="d-flex text-center align-items-center justify-content-center mb-5">
         <div class="w-50">
-            <%= column_chart @company.group_by_old_and_new_price %>
+            <%= column_chart @company.group_by_old_and_new_price_for_kwh %>
         </div>
     </div>
+
+    <table class="table-fill mb-5">
+        <thead>
+            <tr>
+                <th class="text-left">Totaal aantal connecties</th>
+                <th class="text-left">Totaal Kwh opslag</th>
+                <th class="text-left">Oude Kwh opslag prijs</th>
+                <th class="text-left">Nieuwe Kwh opslag prijs</th>
+                <th class="text-left">Besparing op Kwh opslag </th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            <tr>
+                <td class="text-left"><%= @company.number_of_connections %></td>
+                <td class="text-left"><%= @company.total_kwh_storage %></td>
+                <td class="text-left">€<%= @company.total_old_kwh_storage_price%></td>
+                <td class="text-left">€<%= @company.total_new_kwh_storage_price %></td>
+                <td class="text-left">€<%= @company.total_kwh_storage_savings  %></td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div class="d-flex text-center align-items-center justify-content-center mb-5">
+        <div class="w-50">
+            <%= column_chart @company.group_by_old_and_new_price_for_kwh_storage %>
+        </div>
+    </div>
+
+    <table class="table-fill mb-5">
+        <thead>
+            <tr>
+                <th class="text-left">Totaal aantal connecties</th>
+                <th class="text-left">Totale besparing Kwh</th>
+                <th class="text-left">Totale besparing Kwh opslag</th>
+                <th class="text-left">Totale kosten samenvoeging</th>
+                <th class="text-left">Totale besparing </th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            <tr>
+                <td class="text-left"><%= @company.number_of_connections %></td>
+                <td class="text-left"><%= @company.total_kwh_savings %></td>
+                <td class="text-left">€<%= @company.total_kwh_storage_savings %></td>
+                <td class="text-left">€<%= @company.total_deduction_of_tax %></td>
+                <td class="text-left">€<%= @company.total_savings  %></td>
+
+            </tr>
+        </tbody>
+    </table>
 
 
     <div class="table-title">
@@ -43,8 +97,8 @@
                 <th class="text-left">Jaar</th>
                 <th class="text-left">Aantal connecties</th>
                 <th class="text-left">Totaal Kwh</th>
-                <th class="text-left">Oude prijs</th>
-                <th class="text-left">Nieuwe prijs</th>
+                <th class="text-left">Oude Kwh prijs</th>
+                <th class="text-left">Nieuwe Kwh prijs</th>
                 <th class="text-left">Besparing</th>
             </tr>
         </thead>
@@ -53,10 +107,35 @@
             <tr>
                 <td class="text-left"><%= year.name %></td>
                 <td class="text-left"><%= @company.number_of_connections_per_year(year) %></td>
+                <td class="text-left"><%= @company.deduction_of_tax(year) %></td>
                 <td class="text-left"><%= @company.total_kwh_per_year(year) %></td>
-                <td class="text-left">€<%= @company.old_price_for(year) %></td>
-                <td class="text-left">€<%= @company.new_price_for(year) %></td>
-                <td class="text-left">€<%= @company.savings_for(year) %></td>
+                <td class="text-left">€<%= @company.old_kwh_price_for(year) %></td>
+                <td class="text-left">€<%= @company.new_kwh_price_for(year) %></td>
+                <td class="text-left">€<%= @company.kwh_savings_for(year) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <table class="table-fill my-5">
+        <thead>
+            <tr>
+                <th class="text-left">Jaar</th>
+                <th class="text-left">Aantal connecties</th>
+                <th class="text-left">Totaal Kwh Opslag</th>
+                <th class="text-left">Oude Kwh opslag prijs</th>
+                <th class="text-left">Nieuwe Kwh oplsag prijs</th>
+                <th class="text-left">Besparing</th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            <% @years.each do |year| %>
+            <tr>
+                <td class="text-left"><%= year.name %></td>
+                <td class="text-left"><%= @company.number_of_connections_per_year(year) %></td>
+                <td class="text-left"><%= @company.total_kwh_storage_per_year(year) %></td>
+                <td class="text-left">€<%= @company.old_kwh_storage_price_for(year) %></td>
+                <td class="text-left">€<%= @company.new_kwh_storage_price_for(year) %></td>
+                <td class="text-left">€<%= @company.kwh_storage_savings_for(year) %></td>
             </tr>
             <% end %>
         </tbody>

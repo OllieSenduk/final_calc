@@ -1,0 +1,2 @@
+class TaxCredit < ApplicationRecord
+end

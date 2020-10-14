@@ -26,7 +26,7 @@ class ConnectionYearsController < ApplicationController
     private
 
     def connection_year_params
-        params.require(:connection_year).permit(:year_id, :kwh)
+        params.require(:connection_year).permit(:year_id, :kwh, :kwh_storage)
     end
 
     def find_connection

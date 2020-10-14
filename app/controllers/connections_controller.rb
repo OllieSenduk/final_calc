@@ -9,7 +9,7 @@ class ConnectionsController < ApplicationController
 
     def new
         @company = Company.find(params[:company_id])
-        @connections = Connection.all
+        @connections = @company.connections
         @connection = Connection.new
     end
 
@@ -19,7 +19,7 @@ class ConnectionsController < ApplicationController
         @company = Company.find(params[:company_id])
         @connection.company = @company
         if @connection.save
-            redirect_to company_path(@company)
+            redirect_to new_company_connection_path(@company)
         else
             render 'new'
         end

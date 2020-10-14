@@ -10,6 +10,7 @@
         <% end %>
 
         <%= f.input :kwh %>
+        <%= f.input :kwh_storage %>
         <%= f.button :submit, "submit", class: "btn btn-primary" %>
     </div>
     <% end%>
@@ -20,7 +21,7 @@
     <ul>
         <% @connection_years.each do |cy|  %>
         <li>
-            <%= cy.year_name %> - <%= cy.kwh %>kwh - €<%= cy.total_price_connection_year %>
+            <%= cy.year_name %> - <%= cy.kwh %>kwh - €<%= cy.total_price_kwh_connection_year %>
             <%= link_to " Verwijder dit jaar", connection_year_path(cy), method: "DELETE", data: {confirm: "Are you sure?"}  %>
         </li>
         <% end %>
