@@ -20,7 +20,7 @@
         <tbody class="table-hover">
             <tr>
                 <td class="text-left"><%= @company.number_of_connections %></td>
-                <td class="text-left"><%= @company.total_deduction_of_tax %></td>
+                <td class="text-left">€<%= @company.total_deduction_of_tax %></td>
                 <td class="text-left"><%= @company.total_kwh %></td>
                 <td class="text-left">€<%= @company.total_old_kwh_price%></td>
                 <td class="text-left">€<%= @company.total_new_kwh_price %></td>
@@ -96,6 +96,7 @@
             <tr>
                 <th class="text-left">Jaar</th>
                 <th class="text-left">Aantal connecties</th>
+                <th class="text-left">Jaarlijks verlies op heffingbelasting</th>
                 <th class="text-left">Totaal Kwh</th>
                 <th class="text-left">Oude Kwh prijs</th>
                 <th class="text-left">Nieuwe Kwh prijs</th>
@@ -107,7 +108,7 @@
             <tr>
                 <td class="text-left"><%= year.name %></td>
                 <td class="text-left"><%= @company.number_of_connections_per_year(year) %></td>
-                <td class="text-left"><%= @company.deduction_of_tax(year) %></td>
+                <td class="text-left">€<%= @company.deduction_of_tax(year) %></td>
                 <td class="text-left"><%= @company.total_kwh_per_year(year) %></td>
                 <td class="text-left">€<%= @company.old_kwh_price_for(year) %></td>
                 <td class="text-left">€<%= @company.new_kwh_price_for(year) %></td>
