@@ -53,15 +53,15 @@ module Calculators
         end
 
         def total_kwh_savings 
-            total_old_kwh_price - total_new_kwh_price
+            (total_old_kwh_price - total_new_kwh_price).round(2)
         end
 
         def total_kwh_storage_savings 
-            total_old_kwh_storage_price - total_new_kwh_storage_price
+            (total_old_kwh_storage_price - total_new_kwh_storage_price).round(2)
         end
 
         def total_savings 
-            total_deduction_of_tax + total_kwh_storage_savings + total_kwh_savings
+            (total_deduction_of_tax + total_kwh_storage_savings + total_kwh_savings).round(2)
         end
 
     end
