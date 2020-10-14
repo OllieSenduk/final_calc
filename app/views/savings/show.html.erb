@@ -4,7 +4,7 @@
         <h3><%= @company.name %></h3>
         <h3>Globale statistieken</h3>
     </div>
-    <% if %>
+    <% if @company.connections.any? %>
     <table class="table-fill mb-5">
         <thead>
             <tr>
@@ -140,4 +140,6 @@
             <% end %>
         </tbody>
     </table>
+    <% end %>
+
 </div>
