@@ -16,7 +16,7 @@ module Calculators
         def deduction_of_tax(year)
             num_of_connections = number_of_connections_per_year(year)
             if num_of_connections > 1 
-                amount_per_connection = TaxCredit.find(year: year).amount 
+                amount_per_connection = TaxCredit.find_by(year: year).amount 
                 amount_per_connection * (num_of_connections - 1)
             else 
                 0
