@@ -1,8 +1,9 @@
 # if Rails.env.development?
-#     ConnectionYear.delete_all
-#     Connection.delete_all
-#     Company.delete_all
-#     Year.delete_all
+    TaxCredit.delete_all
+    ConnectionYear.delete_all
+    Connection.delete_all
+    Company.delete_all
+    Year.delete_all
 # end
 
 Company.create!(name: "Hurley", category: "Vereniging")
