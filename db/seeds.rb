@@ -82,7 +82,7 @@ TaxCredit.create(
     year: 2018,
     amount:  -308.54
 )
-)
+
 TaxCredit.create(
     year: 2019,
     amount:   -257.54
