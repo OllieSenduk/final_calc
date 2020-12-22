@@ -67,6 +67,19 @@ Year.create(
     tier_4_storage_price:  30,
 )
 
+Year.create(
+    name: "2020",
+    tier_1_price: 9770,
+    tier_2_price: 5083,
+    tier_3_price: 1353,
+    tier_4_price: 55,
+    tier_1_storage_price:  2730,
+    tier_2_storage_price:  3750,
+    tier_3_storage_price:  205,
+    tier_4_storage_price:  40,
+)
+
+
 TaxCredit.create(
     year: 2015,
     amount:  -311.84
@@ -87,5 +100,10 @@ TaxCredit.create(
 TaxCredit.create(
     year: 2019,
     amount:   -257.54
+)
+
+TaxCredit.create(
+    year: 2020,
+    amount:   -435,68
 )
 
